@@ -1,0 +1,191 @@
+.search-container {
+  background: #363a4f; /* Surface */
+  color: #cad3f5; /* Text */
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #a5adcb;
+  background: #24273a;
+  color: #cad3f5;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #c6a0f6; /* Mauve */
+  color: #24273a;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  color: #ed8796; /* Red */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: #ed8796; /* Red */
+  margin-bottom: 10px;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.movie-card {
+  background: #24273a;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.movie-card button {
+  margin-top: 8px;
+  background: #ed8796;
+}
+.search-container {
+  padding: 1rem;
+  background-color: #24273a; /* base */
+  color: #cad3f5; /* text */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #363a4f; /* surface */
+  color: #cad3f5;
+}
+
+.search-form input::placeholder {
+  color: #a5adcb; /* subtext */
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.movie-card {
+  background-color: #363a4f; /* surface */
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.movie-card h3 {
+  color: #c6a0f6; /* mauve */
+  margin-bottom: 0.5rem;
+}
+
+.movie-card p {
+  margin: 0.2rem 0;
+}
+
+.movie-card button {
+  margin-top: 0.5rem;
+  background-color: #ed8796; /* red */
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #cad3f5;
+}
+
+.movie-card button:hover {
+  background-color: #ed5f6f;
+}
+.movie-poster {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+  max-height: 200px;
+}
+.search-container {
+  margin-bottom: 1rem;
+}
+
+input {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #c6a0f6; /* Mauve accent */
+  background-color: #363a4f; /* Surface */
+  color: #cad3f5; /* Text */
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.movie-card {
+  background-color: #24273a; /* Base */
+  color: #cad3f5; /* Text */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+button {
+  background-color: #c6a0f6; /* Mauve */
+  color: #24273a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #9d7cd8;
+}
+

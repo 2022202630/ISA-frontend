@@ -1,0 +1,33 @@
+<div class="movie-search-container">
+  <h2 class="title" align="center">Movie Search</h2>
+
+<div class="search-container">
+  <form [formGroup]="searchForm">
+    <input formControlName="title" placeholder="Search by title">
+    <input formControlName="director" placeholder="Search by director">
+    <input formControlName="genre" placeholder="Search by genre">
+  </form>
+</div>
+
+<div *ngIf="error">{{ error }}</div>
+
+<div class="movies-grid">
+  <div class="movie-card" *ngFor="let movie of movies">
+    <img *ngIf="movie.posterUrl" [src]="movie.posterUrl" alt="{{ movie.name }}" class="movie-poster"/>
+    <h3>{{ movie.name }}</h3>
+    <p>Director: {{ movie.director }}</p>
+    <p>Genres: {{ movie.genres }}</p>
+    <p>Actors: {{ movie.actors }}</p>
+    <p>Screening Time: {{ movie.screeningTime }}</p>
+    <button (click)="deleteMovie(movie.id)">Delete</button>
+  </div>
+</div>
+
+
+
+
+
+  <ng-template #noMovies>
+    <p class="no-results">No movies found.</p>
+  </ng-template>
+</div>

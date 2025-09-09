@@ -1,0 +1,12 @@
+{
+  "/auth": {
+    "target": "http://178.148.18.92:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/movies": {
+    "target": "http://178.148.18.92:8080",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

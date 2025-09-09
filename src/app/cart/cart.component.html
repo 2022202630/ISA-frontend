@@ -1,0 +1,18 @@
+<h2>Cart</h2>
+<ul>
+  <li *ngFor="let item of cart">
+    {{ item.movie.name }} - Screening: {{ item.screeningTime  }}
+    <button mat-button color="warn" (click)="remove(item.id)">Remove</button>
+  </li>
+</ul>
+
+<button mat-raised-button color="primary" (click)="checkout()" [disabled]="cart.length === 0">
+  Checkout
+</button>
+
+<h2>Reservations</h2>
+<ul>
+  <li *ngFor="let item of reservations">
+    {{ item.movie.name }} - Screening: {{ item.screeningTime}}
+  </li>
+</ul>

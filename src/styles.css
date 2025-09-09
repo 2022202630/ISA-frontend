@@ -1,1 +1,144 @@
 /* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+:host {
+  display: block;
+  min-height: 100vh; /* full height */
+  background-color: #24273a; /* dark blue background */
+  color: #c6a0f6; /* make text readable */
+  padding: 20px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  background-color: #000; /* set this to match your homepage background */
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+:root {
+  --ctp-base:    #24273a; /* background */
+  --ctp-surface: #363a4f;
+  --ctp-text:    #cad3f5;
+  --ctp-subtext: #a5adcb;
+  --ctp-mauve:   #c6a0f6; /* accent */
+  --ctp-red:     #ed8796;
+}
+/* Base toolbar style */
+mat-toolbar {
+  background-color: #1e2030 !important;
+  color: var(--ctp-text) !important;
+  font-family: 'Inter', sans-serif;
+  padding: 0 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Nav container */
+mat-toolbar nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo / left-side span */
+mat-toolbar nav > span {
+  font-weight: 600;
+  color: var(--ctp-mauve);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Spacer to push nav items to right */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Links */
+mat-toolbar a[mat-button] {
+  color: var(--ctp-subtext) !important;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s ease-in-out, background-color 0.2s;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Hover effect */
+mat-toolbar a[mat-button]:hover {
+  color: var(--ctp-mauve) !important;
+  background-color: var(--ctp-surface);
+}
+
+/* Active/selected link style */
+mat-toolbar a[mat-button].active {
+  color: var(--ctp-mauve) !important;
+  border-bottom: 2px solid var(--ctp-mauve);
+}
+
+/* About button highlight */
+mat-toolbar a.about-btn {
+  color: var(--ctp-mauve) !important;
+  font-weight: 600;
+}
+a[mat-button].active-link {
+  color: var(--ctp-mauve) !important;
+}
+
+:root {
+  --ctp-base:    #24273a;
+  --ctp-surface: #363a4f;
+  --ctp-text:    #cad3f5;
+  --ctp-subtext: #a5adcb;
+  --ctp-mauve:   #c6a0f6;
+  --ctp-red:     #ed8796;
+}
+
+/* Material background */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--ctp-base);
+  font-family: 'Inter', sans-serif;
+  color: var(--ctp-text);
+}
+
+/* Override Angular Material colors */
+.mat-mdc-card {
+  background-color: var(--ctp-surface) !important;
+  color: var(--ctp-text) !important;
+}
+
+.mat-mdc-form-field-label {
+  color: var(--ctp-subtext) !important;
+}
+
+.mat-mdc-input-element {
+  color: var(--ctp-text) !important;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--ctp-mauve) !important;
+  color: var(--ctp-base) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  background-color: #b28cf2 !important;
+}
+
+.mat-mdc-outlined-button {
+  border-color: var(--ctp-mauve) !important;
+  color: var(--ctp-mauve) !important;
+}
+
+.mat-mdc-outlined-button:hover {
+  background-color: rgba(198, 160, 246, 0.1) !important;
+}
+

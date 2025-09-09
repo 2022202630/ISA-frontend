@@ -1,0 +1,60 @@
+
+:host {
+  display: block;
+  min-height: 100vh; /* full height */
+  background-color: #24273a; /* dark blue background */
+  color: #c6a0f6; /* make text readable */
+  padding: 20px;
+}
+
+.logo{
+  color: #c6a0f6;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbar nav .btn {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: #ff4444;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar nav .btn:hover {
+  background: #ff2222;
+}
+
+/* Content */
+.content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.film-card {
+  background: #24273a;
+  color: #cad3f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px #181926;
+  transition: transform 0.2s;
+}
+
+.film-card:hover {
+  transform: scale(1.05);
+}
+
+.film-card img {
+  width: 100%;
+  height: auto;
+}
