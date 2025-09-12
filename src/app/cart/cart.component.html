@@ -1,18 +1,15 @@
-<h2>Cart</h2>
-<ul>
-  <li *ngFor="let item of cart">
-    {{ item.movie.name }} - Screening: {{ item.screeningTime  }}
-    <button mat-button color="warn" (click)="remove(item.id)">Remove</button>
-  </li>
-</ul>
+<div class="cart-container">
+  <h2>Your Cart</h2>
 
-<button mat-raised-button color="primary" (click)="checkout()" [disabled]="cart.length === 0">
-  Checkout
-</button>
+  <div *ngIf="cartItems.length === 0">Your cart is empty</div>
 
-<h2>Reservations</h2>
-<ul>
-  <li *ngFor="let item of reservations">
-    {{ item.movie.name }} - Screening: {{ item.screeningTime}}
-  </li>
-</ul>
+  <div class="cart-item" *ngFor="let item of cartItems">
+    <span>Movie ID: {{ item.movieId }} | Quantity: {{ item.quantity }}</span>
+    <button (click)="removeItem(item.movieId)">Remove</button>
+  </div>
+
+  <div class="cart-actions" *ngIf="cartItems.length > 0">
+    <button (click)="clearCart()">Clear Cart</button>
+    <button (click)="checkout()">Checkout</button>
+  </div>
+</div>

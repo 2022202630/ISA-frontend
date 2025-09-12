@@ -19,7 +19,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = this.authService.getToken();
     let authReq = req;
 
-    // ✅ Attach JWT if available
     if (token) {
       authReq = req.clone({
         setHeaders: {
@@ -30,7 +29,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        // ✅ If token is expired or forbidden, log out
         if (error.status === 401 || error.status === 403) {
           this.authService.logout();
           this.router.navigate(['/login']);

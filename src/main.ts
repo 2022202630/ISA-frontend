@@ -12,9 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
+import { provideToastr } from 'ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideAnimations(),  // required for Toastr animations
+    provideToastr(),      // registers ToastrService
     provideHttpClient(),
     provideAnimations(),
     provideRouter(routes),

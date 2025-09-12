@@ -4,9 +4,12 @@ import { MovieService } from '../services/movie.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-movie-search',
+  standalone: true,
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.css'],
   imports: [ReactiveFormsModule, CommonModule]
@@ -17,8 +20,13 @@ export class MovieSearchComponent {
   error: string | null = null;
   isLoading = false;
 
-  
-constructor(private fb: FormBuilder, private movieService: MovieService, private cartService: CartService) {
+  constructor(
+  private fb: FormBuilder,
+  private movieService: MovieService,
+  private cartService: CartService,
+  private authService: AuthService,
+  private toastr: ToastrService
+  ) {
     this.searchForm = this.fb.group({
       title: [''],
       director: [''],
@@ -27,10 +35,10 @@ constructor(private fb: FormBuilder, private movieService: MovieService, private
   }
 
   ngOnInit(): void {
-    // Load all movies immediately
+    // Load all movies initially
     this.loadMovies();
 
-    // Optional: live search as you type
+    // Live search
     this.searchForm.valueChanges.subscribe(() => {
       this.loadMovies();
     });
@@ -39,57 +47,51 @@ constructor(private fb: FormBuilder, private movieService: MovieService, private
   loadMovies(): void {
     this.isLoading = true;
     const { title, director, genre } = this.searchForm.value;
+
     this.movieService.searchMovies(title, director, genre).subscribe({
-      next: (movies: any[]) => {
-        // Add random dummy screening times
-this.movieService.searchMovies(title, director, genre).subscribe({
-  next: data => {
-    // Map director, genres, actors to strings
-    this.movies = data.map(movie => ({
-      ...movie,
-      
+      next: (data: any[]) => {
+        this.movies = data.map(movie => ({
+          ...movie,
           screeningTime: this.getRandomScreeningTime(),
-      director: movie.director?.name || 'Unknown',
-      genres: movie.genres?.map((g: any) => g.name) || [],
-      actors: movie.actors?.map((a: any) => a.name) || []
-    }));
-    this.isLoading = false;
-  },
-  error: () => {
-    this.error = 'Failed to fetch movies';
-    this.isLoading = false;
-  }
-});
+          director: movie.director?.name || 'Unknown',
+          genres: movie.genres?.map((g: any) => g.name).join(', ') || 'N/A',
+          actors: movie.actors?.map((a: any) => a.name).join(', ') || 'N/A'
+        }));
+        this.isLoading = false;
+      },
+      error: () => {
+        this.error = 'Failed to fetch movies';
+        this.isLoading = false;
       }
     });
+  }
+
+    isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 
   deleteMovie(id: number) {
     this.movieService.deleteMovie(id).subscribe(() => {
       this.movies = this.movies.filter(m => m.id !== id);
+      this.toastr.success('Movie deleted successfully!');
+    });
+  }
+  addToCart(movieId: number): void {
+    if (!this.authService.getToken()) {
+      this.toastr.error('Please log in first');
+      return;
+    }
+
+    this.cartService.addToCart(movieId).subscribe({
+      next: () => this.toastr.success('Movie added to cart!'),
+      error: () => this.toastr.error('Failed to add to cart')
     });
   }
 
-  getRandomScreeningTime(): string {
+  
+  private getRandomScreeningTime(): string {
     const hour = Math.floor(Math.random() * 12) + 10; // 10AM - 9PM
-    const minutes = Math.random() < 0.5 ? '00' : '30'; 
-    return `${hour}:${minutes }`;
+    const minutes = Math.random() < 0.5 ? '00' : '30';
+    return `${hour}:${minutes}`;
   }
-addToCart(movie: any) {
-  const userId = Number(localStorage.getItem('userId')); // or get it from your AuthService
-  if (!userId) {
-    console.error('No logged-in user found!');
-    return;
-  }
-
-  this.cartService.addToCart(movie.id, userId).subscribe({
-    next: (res) => {
-      console.log('Added to cart', res);
-    },
-    error: (err) => {
-      console.error('Failed to add to cart', err);
-    }
-  });
-}
-
 }

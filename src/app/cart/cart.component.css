@@ -1,46 +1,13 @@
 .cart-container {
-  background-color: #24273a;
-  color: #cad3f5;
   padding: 20px;
-  border-radius: 10px;
-  font-family: 'Segoe UI', sans-serif;
+}
 
-  h2 {
-    color: #c6a0f6;
-  }
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-
-    th, td {
-      padding: 8px;
-      border-bottom: 1px solid #363a4f;
-    }
-
-    th {
-      text-align: left;
-      color: #ed8796;
-    }
-
-    td img {
-      border-radius: 5px;
-    }
-  }
-
-  button {
-    background-color: #c6a0f6;
-    color: #24273a;
-    border: none;
-    padding: 5px 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #ed8796;
-      color: #ffffff;
-    }
-  }
+.cart-actions button {
+  margin-right: 10px;
 }

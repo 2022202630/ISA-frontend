@@ -21,18 +21,21 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'bioskop-frontend';
   isLoggedIn$: Observable<boolean>;
   username: string | null = null;
 
   constructor(public authService: AuthService) {
     this.isLoggedIn$ = authService.isLoggedIn$;
 
-    // Initialize username if logged in
+    this.isLoggedIn$.subscribe(loggedIn => {
+      this.username = loggedIn ? authService.getUsernameFromToken() : null;
+    });
+
     if (authService.hasToken()) {
       this.username = authService.getUsernameFromToken();
     }
 
-    // Update username reactively
     this.isLoggedIn$.subscribe(logged => {
       this.username = logged ? authService.getUsernameFromToken() : null;
     });
@@ -40,5 +43,9 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }

@@ -188,4 +188,7 @@ button {
 button:hover {
   background-color: #9d7cd8;
 }
-
+.movie-card .add-to-cart-btn {
+  background-color: #c6a0f6; /* Mauve */
+  color: #cad3f5;
+}

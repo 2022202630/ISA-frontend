@@ -2,11 +2,22 @@
 <main class="content">
   <h2>Now Showing</h2>
   <div class="films-grid">
-  <div *ngFor="let movie of movies" class="film-card">
-    <img [src]="movie.posterUrl || 'https://via.placeholder.com/200x300'" alt="Film Poster">
-    <h3>{{ movie.name }}</h3>
-    <p>Genres: {{ getGenreList(movie.genres) }}</p>
-    <p>Runtime: {{ movie.duration }} min</p>
+    <div *ngFor="let movie of movies | slice:0:7" class="film-card">
+      <img [src]="movie.posterUrl || 'https://via.placeholder.com/200x300'" alt="Film Poster">
+      <h3>{{ movie.name }}</h3>
+      <p>Genres: {{ getGenreList(movie.genres) }}</p>
+      <p>Runtime: {{ movie.duration }} min</p>
+    </div>
   </div>
-</div>
+  
+  <div class="films-grid">
+    <div *ngFor="let movie of recommendedMovies | slice:0:7" class="film-card">
+      <img [src]="movie.posterUrl || 'https://via.placeholder.com/200x300'" alt="Film Poster">
+      <h3>{{ movie.name }}</h3>
+      <p>Genres: {{ getGenreList(movie.genres) }}</p>
+      <p>Runtime: {{ movie.duration }} min</p>
+    </div>
+  </div>
+
 </main>
+  

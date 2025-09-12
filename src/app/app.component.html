@@ -6,7 +6,7 @@
     <i class="fa-solid fa-house"></i> Home
   </a>
 
-  <a routerLink="/add-movie" routerLinkActive="active-link" mat-button>
+  <a *ngIf="isAdmin()" routerLink="/add-movie" routerLinkActive="active-link" mat-button>
     <i class="fa-solid fa-plus"></i> Add Movie
   </a>
 
@@ -24,17 +24,13 @@
 
   <!-- Logged In -->
   <ng-container *ngIf="isLoggedIn$ | async; else showLogin">
-    <span class="username">Logged In! {{ username }}</span>
-    <button mat-button (click)="logout()">
-      <i class="fa-solid fa-right-from-bracket"></i> Logout
-    </button>
+    <button mat-button class="logout-btn" (click)="logout()">Logout</button>
+    <span>Hello, {{ username }}</span>
   </ng-container>
 
-  <!-- Logged Out -->
+  <!-- logged out -->
   <ng-template #showLogin>
-    <a routerLink="/login" mat-button>
-      <i class="fa-solid fa-circle-info"></i> Login
-    </a>
+    <a routerLink="/login" routerLinkActive="active-link" mat-button>Login</a>
   </ng-template>
 </mat-toolbar>
 

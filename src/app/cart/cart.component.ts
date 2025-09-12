@@ -1,51 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService, CartItem } from '../services/cart.service';
-import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  imports: [ CommonModule ]
+  imports: [CommonModule]
 })
-export class CartComponent implements OnInit {
-  cart: CartItem[] = [];
-  reservations: CartItem[] = [];
-  userId: number;
+export class CartComponent {
+  cartItems: CartItem[] = [];
 
-  constructor(
-    private cartService: CartService,
-    private authService: AuthService
-  ) {
-    this.userId = Number(localStorage.getItem('userId')); // adjust depending how you store it
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => this.cartItems = items);
+    this.cartService.loadCart();
   }
 
-  ngOnInit() {
-    this.loadCart();
-    this.loadReservations();
+  removeItem(movieId: number) {
+    this.cartService.removeFromCart(movieId).subscribe();
   }
 
-  loadCart() {
-    this.cartService.getCart(this.userId).subscribe((res) => (this.cart = res));
-  }
-
-  loadReservations() {
-    this.cartService
-      .getReservations(this.userId)
-      .subscribe((res) => (this.reservations = res));
+  clearCart() {
+    this.cartService.clearCart().subscribe();
   }
 
   checkout() {
-    this.cartService.checkout(this.userId).subscribe(() => {
-      this.loadCart();
-      this.loadReservations();
-    });
-  }
-
-  remove(cartId: number) {
-    this.cartService.remove(cartId).subscribe(() => {
-      this.loadCart();
-    });
+    this.cartService.checkout().subscribe(() => alert('Checkout successful!'));
   }
 }

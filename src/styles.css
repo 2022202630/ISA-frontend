@@ -142,3 +142,37 @@ html, body {
   background-color: rgba(198, 160, 246, 0.1) !important;
 }
 
+  .logo {
+    font-weight: bold;
+    color: #c6a0f6; /* mauve accent */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Logout button like other buttons */
+.logout-btn {  color: var(--ctp-subtext) !important;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s ease-in-out, background-color 0.2s;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+}
+
+.logout-btn:hover {
+  color: var(--ctp-mauve) !important;
+  background-color: var(--ctp-surface);
+}
+
+/* Logo text */
+mat-toolbar > span:first-child {
+  color: var(--ctp-mauve);
+  font-weight: bold;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
