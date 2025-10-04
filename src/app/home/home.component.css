@@ -1,9 +1,9 @@
 
 :host {
   display: block;
-  min-height: 100vh; /* full height */
-  background-color: #24273a; /* dark blue background */
-  color: #c6a0f6; /* make text readable */
+  min-height: 100vh; 
+  background-color: #24273a; 
+  color: #c6a0f6; 
   padding: 20px;
 }
 
@@ -28,7 +28,6 @@
   background: #ff2222;
 }
 
-/* Content */
 .content {
   padding: 2rem;
   text-align: center;

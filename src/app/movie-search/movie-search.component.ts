@@ -35,10 +35,8 @@ export class MovieSearchComponent {
   }
 
   ngOnInit(): void {
-    // Load all movies initially
     this.loadMovies();
 
-    // Live search
     this.searchForm.valueChanges.subscribe(() => {
       this.loadMovies();
     });

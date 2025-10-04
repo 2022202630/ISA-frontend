@@ -64,7 +64,7 @@ export class LoginComponent {
         if (response) {
           this.authService.setToken(response.token);
           this.loading = false;
-          this.router.navigate(['/']); // Redirect to home
+          this.router.navigate(['/']);
         }
       });
   }

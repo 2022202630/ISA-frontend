@@ -16,8 +16,8 @@ import { provideToastr } from 'ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideAnimations(),  // required for Toastr animations
-    provideToastr(),      // registers ToastrService
+    provideAnimations(), 
+    provideToastr(),    
     provideHttpClient(),
     provideAnimations(),
     provideRouter(routes),
