@@ -7,6 +7,11 @@ import { Movie } from '../models/movie.model';
   providedIn: 'root'
 })
 export class MovieService {
+
+  getMovieById(id: number) {
+  return this.http.get<any>(`http://178.148.18.92:8080/movies/${id}`);
+}
+
 getMoviesByGenres(genres: string[], limit: number = 7): Observable<Movie[]> {
   const params = new HttpParams()
     .set('genres', genres.join(','))
@@ -45,4 +50,6 @@ getMoviesByGenres(genres: string[], limit: number = 7): Observable<Movie[]> {
 
   updateMovie(id: number, data: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, data);}
+
+    
 }

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { RouterModule } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: data => {
           console.log('Movies from backend:', data);
-          this.movies = data.slice(0, 7); // show only first 10 movies
+          this.movies = data.slice(0, 7);
         },
         error: err => console.error('Failed to load movies', err)
       });

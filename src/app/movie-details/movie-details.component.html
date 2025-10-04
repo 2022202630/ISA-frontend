@@ -1,0 +1,44 @@
+<div class="movie-details-container">
+
+  <img class="poster" [src]="movie?.posterUrl || 'https://via.placeholder.com/300x450'" alt="Movie Poster">
+
+  <div class="details">
+    <h1>{{ movie?.name }}</h1>
+    <p><strong>Director:</strong> {{ movie?.director?.name || movie?.director || 'N/A' }}</p>
+    <p><strong>Actors:</strong> {{ getGenreList(movie?.actors) }}</p>
+    <p><strong>Genres:</strong> {{ getGenreList(movie?.genres) }}</p>
+    <p><strong>Duration:</strong> {{ movie?.duration }} min</p>
+
+    <div class="rating-section">
+      <div class="stars">
+        <span class="star" *ngFor="let star of [1,2,3,4,5]">
+          {{ star <= Math.round(averageRating) ? '★' : '☆' }}
+        </span>
+        <span>({{ averageRating.toFixed(1) }})</span>
+      </div>
+      <div class="rate">
+        <select [(ngModel)]="rating">
+          <option *ngFor="let r of [1,2,3,4,5]" [value]="r">{{ r }}</option>
+        </select>
+        <button (click)="submitRating()">Rate</button>
+      </div>
+    </div>
+
+    <div class="comments">
+      <h3>Comments</h3>
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="comment-header">
+          <strong>{{ comment.name }}</strong>
+          <span class="date">{{ comment.date }}</span>
+        </div>
+        <p>{{ comment.text }}</p>
+      </div>
+
+      <div class="post-comment">
+        <textarea [(ngModel)]="newComment" placeholder="Write a comment..."></textarea>
+        <button (click)="postComment()">Post Comment</button>
+        <div class="thank-you" *ngIf="thankYouMessage">{{ thankYouMessage }}</div>
+      </div>
+    </div>
+  </div>
+</div>

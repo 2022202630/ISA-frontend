@@ -6,6 +6,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { CartComponent } from './cart/cart.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,4 +15,5 @@ export const routes: Routes = [
   { path: 'add-movie', component: AddMovieComponent },
   { path: 'movie-search', component: MovieSearchComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'movie/:id', component: MovieDetailsComponent },
 ];
